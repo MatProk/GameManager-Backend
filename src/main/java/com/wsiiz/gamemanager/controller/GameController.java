@@ -16,13 +16,13 @@ public class GameController {
     @Autowired
     GameRepository gameRepository;
 
-    @GetMapping("/games")
+    @GetMapping("/game")
     public List<Game> getAllGames(){
         return gameRepository.findAll();
     }
 
-    @PostMapping("/games")
+    @PostMapping("/game")
     public void saveGame(@RequestBody GameRequest gameRequest){
-        gameRepository.save(new Game(gameRequest.getName(), gameRequest.getAuthor(), gameRequest.getDescription(), gameRequest.getGameMode(), new Date()));
+        gameRepository.save(new Game(gameRequest.getName(), gameRequest.getAuthor(), gameRequest.getDescription(), gameRequest.getGameMode(), gameRequest.getReleaseDate()));
     }
 }

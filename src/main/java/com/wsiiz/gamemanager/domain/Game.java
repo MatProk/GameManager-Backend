@@ -1,5 +1,6 @@
 package com.wsiiz.gamemanager.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +31,7 @@ public class Game {
     private String gameMode;
 
     @Column(nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date releaseDate;
 
     public Game(String name, String author, String description, String gameMode, Date releaseDate) {
