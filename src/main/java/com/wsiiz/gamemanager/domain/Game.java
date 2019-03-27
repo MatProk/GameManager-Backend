@@ -13,7 +13,7 @@ import java.util.Date;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Length(max = 50, min = 5)
     @Column(nullable = false)
