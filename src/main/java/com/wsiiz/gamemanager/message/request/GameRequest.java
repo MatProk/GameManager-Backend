@@ -13,12 +13,14 @@ public class GameRequest {
     private String gameMode;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date releaseDate;
+    private String payload;
 
-    public GameRequest(String name, String author, String description, String gameMode, Date releaseDate) {
+    public GameRequest(String name, String author, String description, String gameMode, Date releaseDate, String payload) {
         this.name = name;
         this.author = author;
         this.description = description;
         this.gameMode = gameMode;
         this.releaseDate = releaseDate;
+        this.payload = payload;
     }
 }

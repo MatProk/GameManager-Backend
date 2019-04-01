@@ -23,7 +23,7 @@ public class GameController {
 
     @PostMapping("/games")
     public void saveGame(@RequestBody GameRequest gameRequest){
-        gameRepository.save(new Game(gameRequest.getName(), gameRequest.getAuthor(), gameRequest.getDescription(), gameRequest.getGameMode(), gameRequest.getReleaseDate()));
+        gameRepository.save(new Game(gameRequest.getName(), gameRequest.getAuthor(), gameRequest.getDescription(), gameRequest.getGameMode(), gameRequest.getReleaseDate(), gameRequest.getPayload()));
     }
 
     @GetMapping("/games/{id}")

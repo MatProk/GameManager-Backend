@@ -34,12 +34,17 @@ public class Game {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date releaseDate;
 
-    public Game(String name, String author, String description, String gameMode, Date releaseDate) {
+    @Lob
+    @Column(name = "payload")
+    private String payload;
+
+    public Game(String name, String author, String description, String gameMode, Date releaseDate, String payload) {
         this.name = name;
         this.author = author;
         this.description = description;
         this.gameMode = gameMode;
         this.releaseDate = releaseDate;
+        this.payload = payload;
     }
 
     public Game(){
