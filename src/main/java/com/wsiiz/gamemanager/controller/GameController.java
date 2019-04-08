@@ -1,6 +1,7 @@
 package com.wsiiz.gamemanager.controller;
 
 import com.wsiiz.gamemanager.domain.Game;
+import com.wsiiz.gamemanager.exception.ResourceNotFoundException;
 import com.wsiiz.gamemanager.message.request.GameRequest;
 import com.wsiiz.gamemanager.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,27 @@ public class GameController {
     }
 
     @GetMapping("/games/{id}")
-    public Optional<Game> getOneGame(@PathVariable(value = "id") Long id){return gameRepository.findById(id);}
+    public Optional<Game> getOneGame(@PathVariable Long id){return gameRepository.findById(id);}
 
     @DeleteMapping("/games/{id}")
     public void deleteGame(@PathVariable Long id){
         gameRepository.deleteById(id);
+    }
+
+    @PutMapping("/games/{id}")
+    public void updateGame(@PathVariable(value = "id") Long id,
+                           @RequestBody GameRequest gameRequest) {
+
+        Game game = gameRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Game", "id", id));
+
+        game.setName(gameRequest.getName());
+        game.setAuthor(gameRequest.getAuthor());
+        game.setDescription(gameRequest.getDescription());
+        game.setReleaseDate(gameRequest.getReleaseDate());
+        game.setGameMode(gameRequest.getGameMode());
+
+        gameRepository.save(game);
+
     }
 }

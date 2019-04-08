@@ -11,7 +11,7 @@ public class GameRequest {
     private String author;
     private String description;
     private String gameMode;
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
     private String payload;
 

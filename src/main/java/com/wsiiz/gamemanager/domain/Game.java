@@ -15,23 +15,24 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(max = 50, min = 5)
+    @Length(max = 100, min = 5)
     @Column(nullable = false)
     private String name;
 
-    @Length(max = 50, min = 5)
+    @Length(max = 100, min = 5)
     @Column(nullable = false)
     private String author;
 
-    @Length(max = 500, min = 10)
+    @Length(max = 500, min = 5)
     @Column(nullable = false)
     private String description;
 
+    @Length(max = 100, min = 5)
     @Column(nullable = false)
     private String gameMode;
 
     @Column(nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseDate;
 
     @Lob
